@@ -1,36 +1,38 @@
 <!doctype html>
 <!--
   Forge — marketing site (localhost preview)
-  Original identity "BASEPLATE": bone + ink + baseplate-green, chunky rounded
-  display (Baloo 2) echoing Roblox studs. Signature = a live baseplate where
-  pixel game-icons build stud-by-stud as the prompt types. Brand = placeholder.
+  Modern AI-builder aesthetic (Lovable / Replit / Whop family): refined dark UI,
+  a big central prompt composer as the hero, one vibrant gradient accent, glassy
+  depth, restrained motion. Brand = placeholder.
   Run:  cd website && node serve.mjs   ->  http://localhost:5173
 -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Forge — Describe your game. Watch it build.</title>
-  <meta name="description" content="Forge turns plain words into a real Roblox game — code, worlds, and UI — assembled live inside Studio." />
+  <title>Forge — Build something playable</title>
+  <meta name="description" content="Describe any Roblox game and Forge builds it for you — code, worlds, and UI — right inside Studio." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2315140f'/><circle cx='11' cy='11' r='3' fill='%231fb85c'/><circle cx='21' cy='11' r='3' fill='%23f1efe6'/><circle cx='11' cy='21' r='3' fill='%23f1efe6'/><circle cx='21' cy='21' r='3' fill='%231fb85c'/></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0b10'/><path d='M10 23 L16 9 L22 23 Z' fill='url(%23g)'/><defs><linearGradient id='g' x1='0' y1='0' x2='32' y2='32'><stop stop-color='%238b5cff'/><stop offset='1' stop-color='%23ff6ec7'/></linearGradient></defs></svg>" />
 </head>
 <body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#top" aria-label="Forge home">
-        <svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#15140f"/><circle cx="11" cy="11" r="3" fill="#1fb85c"/><circle cx="21" cy="11" r="3" fill="#f1efe6"/><circle cx="11" cy="21" r="3" fill="#f1efe6"/><circle cx="21" cy="21" r="3" fill="#1fb85c"/></svg>
+        <svg class="brand-mark" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#15151c"/><path d="M10 23 L16 9 L22 23 Z" fill="url(#bg1)"/><defs><linearGradient id="bg1" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#8b5cff"/><stop offset="1" stop-color="#ff6ec7"/></linearGradient></defs></svg>
         <span class="brand-name">Forge</span>
       </a>
       <nav class="nav-links" id="navLinks">
         <a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
       </nav>
       <div class="nav-cta">
-        <a href="#pricing" class="btn btn-text">Sign in</a>
-        <a href="#pricing" class="btn btn-green">Start free</a>
+        <a href="#pricing" class="btn btn-ghost">Sign in</a>
+        <a href="#pricing" class="btn btn-grad">Start building</a>
         <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -39,79 +41,78 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero wrap">
-      <div class="hero-copy">
-        <span class="eyebrow reveal">// type → build</span>
-        <h1 class="reveal">Describe your game.<br><span class="accent">Watch it build.</span></h1>
-        <p class="lede reveal">Forge turns plain words into a real Roblox game — code, worlds, and UI — assembled live inside Studio.</p>
+      <a href="#pricing" class="badge reveal"><span class="badge-dot"></span> 50,000+ creators building on Forge <span class="badge-arrow">→</span></a>
+      <h1 class="reveal">Build something <span class="grad">playable.</span></h1>
+      <p class="sub reveal">Describe any Roblox game in plain words. Forge builds it for you — code, worlds, and UI — right inside Studio.</p>
 
-        <div class="prompt reveal">
-          <span class="prompt-mark" aria-hidden="true"></span>
-          <span id="typed" class="prompt-typed"></span><span class="prompt-cur"></span>
-          <button class="prompt-go">Build</button>
-        </div>
-
-        <div class="hero-actions reveal">
-          <a href="#pricing" class="btn btn-green btn-lg">Start building — free</a>
-          <a href="#how" class="btn btn-line btn-lg">See how it works</a>
-        </div>
-        <div class="trust reveal">
-          <span class="studrow" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span><b>50,000+</b> creators building with Forge</span>
-        </div>
-      </div>
-
-      <!-- SIGNATURE: live baseplate that pixel-builds the game -->
-      <div class="hero-canvas reveal" aria-hidden="true">
-        <div class="plate">
-          <div class="plate-top">
-            <span class="plate-dot r"></span><span class="plate-dot y"></span><span class="plate-dot g"></span>
-            <span class="plate-label">baseplate · <span id="buildlabel">racing</span></span>
+      <!-- the composer: the hero -->
+      <div class="composer reveal">
+        <div class="composer-in">
+          <div class="composer-text"><span id="typed"></span><span class="caret"></span></div>
+          <div class="composer-bar">
+            <span class="composer-hint"><span class="kbd">⌘</span><span class="kbd">↵</span> to build</span>
+            <button class="composer-send" aria-label="Build">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
-          <div class="studgrid" id="studgrid"></div>
-          <div class="plate-foot"><span class="blink"></span> building <span id="buildname">a racing game</span>…</div>
         </div>
       </div>
-    </section>
+      <div class="chips reveal">
+        <button class="chip">A pizza tycoon</button>
+        <button class="chip">An obby with lava</button>
+        <button class="chip">A racing game</button>
+        <button class="chip">A pet simulator</button>
+      </div>
 
-    <!-- BUILD LOG STRIP -->
-    <section class="logstrip reveal">
-      <div class="wrap logstrip-inner">
-        <span class="lg"><span class="okdot"></span> + CoinService → ServerScriptService</span>
-        <span class="lg"><span class="okdot"></span> + Terrain: snowy hills</span>
-        <span class="lg"><span class="okdot"></span> + ShopUI → StarterGui</span>
-        <span class="lg"><span class="okdot"></span> playtest: 60fps · 214MB</span>
-        <span class="lg"><span class="okdot"></span> + CoinService → ServerScriptService</span>
-        <span class="lg"><span class="okdot"></span> + Terrain: snowy hills</span>
+      <!-- product window -->
+      <div class="app reveal">
+        <div class="app-bar"><span class="ad r"></span><span class="ad y"></span><span class="ad g"></span><span class="app-url">studio · forge</span></div>
+        <div class="app-body">
+          <div class="chatcol">
+            <div class="msg me">make a tycoon where you run a pizza shop</div>
+            <div class="msg ai">
+              <span class="ai-h"><span class="ai-badge">Forge</span> built your game</span>
+              <span class="filechip"><span class="fdot"></span> PizzaService <em>ServerScriptService</em></span>
+              <span class="filechip"><span class="fdot"></span> ShopUI <em>StarterGui</em></span>
+              <span class="filechip"><span class="fdot"></span> Terrain · shop floor</span>
+              <span class="ai-done">✓ Ready to playtest · 60 fps · 214 MB</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="preview-scene"></div>
+            <div class="preview-meta"><span class="preview-title">Pizza Tycoon</span><span class="preview-play"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M8 5v14l11-7z" fill="currentColor"/></svg> Playtest</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section wrap" id="features">
-      <div class="section-head reveal"><span class="eyebrow center">// what it builds</span><h2>It builds the whole game, not snippets.</h2></div>
+      <div class="section-head reveal"><span class="eyebrow">Features</span><h2>It builds the whole game, not snippets.</h2><p>Forge writes the systems, builds the world around them, and keeps improving your game after you ship.</p></div>
       <div class="grid">
-        <article class="card reveal"><div class="studicon"><i></i><i></i><i></i><i></i></div><h3>Server-safe systems</h3><p>Coins, combat, shops, saving — secure Luau that never trusts the client.</p></article>
-        <article class="card hot reveal"><span class="mk">Only on Forge</span><div class="studicon g"><i></i><i></i><i></i><i></i></div><h3>Worlds &amp; terrain</h3><p>“A snowy mountain with a frozen lake” becomes real Roblox terrain in your game.</p></article>
-        <article class="card hot reveal"><span class="mk">Only on Forge</span><div class="studicon g"><i></i><i></i><i></i><i></i></div><h3>Gets faster as you play</h3><p>Forge watches playtests and tunes the game from real FPS, memory, and errors.</p></article>
-        <article class="card reveal"><div class="studicon"><i></i><i></i><i></i><i></i></div><h3>Builds in Studio</h3><p>A native dock widget. Type, build, undo — no exporting, no pasting.</p></article>
-        <article class="card reveal"><div class="studicon"><i></i><i></i><i></i><i></i></div><h3>Menus &amp; HUDs</h3><p>Shops, inventories, HUDs — generated as real UI, wired to your systems.</p></article>
-        <article class="card reveal"><div class="studicon"><i></i><i></i><i></i><i></i></div><h3>Holds up live</h3><p>Validated remotes, safe DataStores with retries and shutdown saves. Ships clean.</p></article>
+        <article class="card reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M8 6 L3 12 L8 18 M16 6 L21 12 L16 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Server-safe systems</h3><p>Coins, combat, shops, saving — secure Luau that never trusts the client.</p></article>
+        <article class="card hot reveal"><span class="mk">Only on Forge</span><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17 C7 11 10 11 12 14 C14 17 17 13 21 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M3 21 H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Worlds &amp; terrain</h3><p>“A snowy mountain with a frozen lake” becomes real Roblox terrain in your game.</p></article>
+        <article class="card hot reveal"><span class="mk">Only on Forge</span><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Gets faster as you play</h3><p>Forge watches playtests and tunes the game from real FPS, memory, and errors.</p></article>
+        <article class="card reveal"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M3 9h18M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Builds in Studio</h3><p>A native dock widget. Type, build, undo — no exporting, no pasting.</p></article>
+        <article class="card reveal"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/></svg></div><h3>Menus &amp; HUDs</h3><p>Shops, inventories, HUDs — generated as real UI, wired to your systems.</p></article>
+        <article class="card reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.4 7.7-8 9-4.6-1.3-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Holds up live</h3><p>Validated remotes, safe DataStores with retries and shutdown saves. Ships clean.</p></article>
       </div>
     </section>
 
     <section class="section wrap" id="how">
-      <div class="section-head reveal"><span class="eyebrow center">// the loop</span><h2>Describe, build, playtest.</h2></div>
+      <div class="section-head reveal"><span class="eyebrow">How it works</span><h2>Describe, build, playtest.</h2></div>
       <ol class="pipeline">
         <li class="reveal"><span class="step-n">1</span><h3>Describe</h3><p>Say what you want in plain words. Forge reads your existing game for context.</p></li>
-        <li class="reveal"><span class="step-n">2</span><h3>Build</h3><p>Real scripts, terrain, and UI snap into the right places, instantly.</p></li>
+        <li class="reveal"><span class="step-n">2</span><h3>Build</h3><p>Real scripts, terrain, and UI land in the right places, instantly.</p></li>
         <li class="reveal"><span class="step-n">3</span><h3>Playtest</h3><p>Forge watches the run and feeds it back — fixing errors and tuning performance.</p></li>
       </ol>
     </section>
 
     <section class="section wrap" id="pricing">
-      <div class="section-head reveal"><span class="eyebrow center">// pricing</span><h2>Start free. Pay when you ship.</h2></div>
+      <div class="section-head reveal"><span class="eyebrow">Pricing</span><h2>Start free. Pay when you ship.</h2></div>
       <div class="plans">
-        <article class="plan reveal"><h3>Free</h3><div class="price"><span class="amt">$0</span><span class="per">/mo</span></div><p class="plan-sub">For trying it out.</p><ul><li>50 builds a month</li><li>Server-safe code</li><li>Studio plugin</li><li>Community support</li></ul><a href="#" class="btn btn-line btn-block">Get started</a></article>
-        <article class="plan plan-on reveal"><span class="plan-badge">Most popular</span><h3>Creator</h3><div class="price"><span class="amt">$15</span><span class="per">/mo</span></div><p class="plan-sub">For solo devs building real games.</p><ul><li>Unlimited builds</li><li>Worlds &amp; terrain</li><li>Menus &amp; HUDs</li><li>Playtest error capture</li><li>Priority builds</li></ul><a href="#" class="btn btn-green btn-block">Start 7-day trial</a></article>
-        <article class="plan reveal"><h3>Studio</h3><div class="price"><span class="amt">$39</span><span class="per">/mo</span></div><p class="plan-sub">For teams shipping at scale.</p><ul><li>Everything in Creator</li><li>Optimization loop</li><li>Team workspaces</li><li>Version history</li><li>Priority support</li></ul><a href="#" class="btn btn-line btn-block">Talk to us</a></article>
+        <article class="plan reveal"><h3>Free</h3><div class="price"><span class="amt">$0</span><span class="per">/mo</span></div><p class="plan-sub">For trying it out.</p><ul><li>50 builds a month</li><li>Server-safe code</li><li>Studio plugin</li><li>Community support</li></ul><a href="#" class="btn btn-ghost btn-block">Get started</a></article>
+        <article class="plan plan-on reveal"><span class="plan-badge">Most popular</span><h3>Creator</h3><div class="price"><span class="amt">$15</span><span class="per">/mo</span></div><p class="plan-sub">For solo devs building real games.</p><ul><li>Unlimited builds</li><li>Worlds &amp; terrain</li><li>Menus &amp; HUDs</li><li>Playtest error capture</li><li>Priority builds</li></ul><a href="#" class="btn btn-grad btn-block">Start 7-day trial</a></article>
+        <article class="plan reveal"><h3>Studio</h3><div class="price"><span class="amt">$39</span><span class="per">/mo</span></div><p class="plan-sub">For teams shipping at scale.</p><ul><li>Everything in Creator</li><li>Optimization loop</li><li>Team workspaces</li><li>Version history</li><li>Priority support</li></ul><a href="#" class="btn btn-ghost btn-block">Talk to us</a></article>
       </div>
     </section>
 
@@ -127,17 +128,16 @@
 
     <section class="wrap">
       <div class="cta reveal">
-        <div class="cta-studs" aria-hidden="true"></div>
         <h2>What will you build?</h2>
         <p>Your next game is a few words away.</p>
-        <a href="#pricing" class="btn btn-ink btn-lg">Start building</a>
+        <a href="#pricing" class="btn btn-grad btn-lg">Start building</a>
       </div>
     </section>
   </main>
 
   <footer class="footer wrap">
     <div class="footer-top">
-      <a class="brand" href="#top"><svg class="brand-mark" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#15140f"/><circle cx="11" cy="11" r="3" fill="#1fb85c"/><circle cx="21" cy="11" r="3" fill="#f1efe6"/><circle cx="11" cy="21" r="3" fill="#f1efe6"/><circle cx="21" cy="21" r="3" fill="#1fb85c"/></svg><span class="brand-name">Forge</span></a>
+      <a class="brand" href="#top"><svg class="brand-mark" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#15151c"/><path d="M10 23 L16 9 L22 23 Z" fill="url(#bg2)"/><defs><linearGradient id="bg2" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#8b5cff"/><stop offset="1" stop-color="#ff6ec7"/></linearGradient></defs></svg><span class="brand-name">Forge</span></a>
       <nav class="footer-links"><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
     </div>
     <div class="footer-bottom"><span>© <span id="year"></span> Forge. Not affiliated with Roblox Corporation.</span><span>Built for creators.</span></div>
