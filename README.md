@@ -53,6 +53,15 @@ The server binds to **127.0.0.1 only** (never exposed to your network) and reads
 `ANTHROPIC_API_KEY` from `.env`. The key is never logged, never sent to the
 plugin, and `.env` is gitignored.
 
+### Test it for free — Mock Mode (no API key)
+
+If you start the server with **no `ANTHROPIC_API_KEY` set**, it runs in **Mock
+Mode**: every `Generate` returns a real, working server-authoritative
+coin-pickup system *without* calling Claude. This lets you test the entire
+pipeline (install → generate → instances created → playtest → feedback) for
+**$0**. The startup log will say `FREE MOCK MODE`. Add your key later to switch
+on real AI generation — no code change needed.
+
 ---
 
 ## 2. Install the Studio plugin

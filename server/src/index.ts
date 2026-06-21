@@ -12,6 +12,7 @@ import "dotenv/config";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { generate } from "./anthropic.js";
 import { parseModelOutput } from "./schema.js";
+import { MOCK_COIN_SYSTEM } from "./mock.js";
 
 const PORT = Number(process.env.PORT) || 8765;
 const HOST = "127.0.0.1";
@@ -62,6 +63,18 @@ async function handleGenerate(req: IncomingMessage, res: ServerResponse): Promis
     : lastFeedback?.logs;
 
   console.log(`[generate] "${request.slice(0, 80)}"`);
+
+  // FREE MOCK MODE: with no API key, return the built-in coin-pickup example
+  // so the whole Studio pipeline can be tested without spending anything.
+  if (!process.env.ANTHROPIC_API_KEY) {
+    console.log("[mock] no ANTHROPIC_API_KEY — returning the built-in coin-pickup example");
+    sendJson(res, 200, {
+      instances: MOCK_COIN_SYSTEM.instances,
+      notes: MOCK_COIN_SYSTEM.notes,
+      usage: { input_tokens: 0, output_tokens: 0, cache_creation_input_tokens: 0, cache_read_input_tokens: 0 },
+    });
+    return;
+  }
 
   const { text, usage } = await generate({ request, scripts, runtimeFeedback });
   const result = parseModelOutput(text);
@@ -125,9 +138,13 @@ const server = createServer((req, res) => {
 
 server.listen(PORT, HOST, () => {
   if (!process.env.ANTHROPIC_API_KEY) {
-    console.warn(
-      "[warn] ANTHROPIC_API_KEY is not set — /generate will fail until you add it to server/.env",
+    console.log(
+      "[mode] FREE MOCK MODE — no API key set. /generate returns the built-in\n" +
+        "       coin-pickup example so you can test the full pipeline for $0.\n" +
+        "       Set ANTHROPIC_API_KEY to switch on real AI generation.",
     );
+  } else {
+    console.log("[mode] LIVE — using Claude for generation.");
   }
   console.log(`AI bridge listening on http://${HOST}:${PORT}`);
 });
