@@ -1,4 +1,4 @@
-// Forge landing — interactions (dependency-free).
+// Imaginable landing — interactions (dependency-free).
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -15,49 +15,47 @@ document.querySelectorAll("#navLinks a").forEach((a) =>
 
 const io = new IntersectionObserver(
   (es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
-  { threshold: 0.14 }
+  { threshold: 0.12 }
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-// ---- Composer: cycle example prompts; chips drop a prompt in ----
-const typed = document.getElementById("typed");
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const IDEAS = [
-  "A tycoon where you run a pizza empire and hire staff",
-  "An obby where the floor turns to lava as you climb",
-  "A racing game with drifting and boost pads",
-  "A pet simulator where pets grow as you collect them",
-];
 
-let timer = null, paused = false;
-
-function typeLoop() {
-  let p = 0, ch = 0, deleting = false;
-  const tick = () => {
-    if (paused) { timer = setTimeout(tick, 400); return; }
-    const t = IDEAS[p];
-    typed.textContent = t.slice(0, ch);
-    if (!deleting && ch < t.length) { ch++; timer = setTimeout(tick, 34 + Math.random() * 36); }
-    else if (!deleting && ch === t.length) { deleting = true; timer = setTimeout(tick, 2200); }
-    else if (deleting && ch > 0) { ch--; timer = setTimeout(tick, 14); }
-    else { deleting = false; p = (p + 1) % IDEAS.length; timer = setTimeout(tick, 280); }
-  };
-  tick();
+// floating-card parallax (subtle, follows cursor)
+const hero = document.querySelector(".hero");
+const stage = document.getElementById("stage");
+if (hero && stage && !reduce) {
+  hero.addEventListener("mousemove", (e) => {
+    const r = hero.getBoundingClientRect();
+    const dx = (e.clientX - r.left) / r.width - 0.5;
+    const dy = (e.clientY - r.top) / r.height - 0.5;
+    stage.style.setProperty("--mx", (dx * 28).toFixed(1) + "px");
+    stage.style.setProperty("--my", (dy * 22).toFixed(1) + "px");
+  });
+  hero.addEventListener("mouseleave", () => { stage.style.setProperty("--mx", "0px"); stage.style.setProperty("--my", "0px"); });
 }
 
+// composer typing — completes "Imagine a game where ___"
+const typed = document.getElementById("typed");
+const IDEAS = [
+  "you run a pizza empire",
+  "the floor turns to lava",
+  "you race on a rainbow road",
+  "you raise and trade pets",
+  "you build and defend a base",
+];
 if (typed) {
   if (reduce) { typed.textContent = IDEAS[0]; }
-  else { setTimeout(typeLoop, 500); }
-
-  // Chips: clicking fills the composer and pauses the cycle.
-  document.querySelectorAll(".chip").forEach((chip) => {
-    chip.addEventListener("click", () => {
-      paused = true;
-      clearTimeout(timer);
-      typed.textContent = chip.textContent;
-      // resume cycling after a few seconds of showing the picked idea
-      clearTimeout(typed._resume);
-      typed._resume = setTimeout(() => { paused = false; if (!reduce) { clearTimeout(timer); typeLoop(); } }, 4000);
-    });
-  });
+  else {
+    let p = 0, ch = 0, deleting = false;
+    const tick = () => {
+      const t = IDEAS[p];
+      typed.textContent = t.slice(0, ch);
+      if (!deleting && ch < t.length) { ch++; setTimeout(tick, 40 + Math.random() * 40); }
+      else if (!deleting && ch === t.length) { deleting = true; setTimeout(tick, 2000); }
+      else if (deleting && ch > 0) { ch--; setTimeout(tick, 16); }
+      else { deleting = false; p = (p + 1) % IDEAS.length; setTimeout(tick, 280); }
+    };
+    setTimeout(tick, 500);
+  }
 }
