@@ -1,0 +1,22 @@
+# Secrets — NEVER commit the real key. Only .env.example is tracked.
+.env
+**/.env
+!**/.env.example
+
+# Node
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Roblox build artifacts (if you ever sync the plugin with Rojo)
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
