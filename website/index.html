@@ -1,44 +1,39 @@
 <!doctype html>
 <!--
   Forge — marketing site (localhost preview)
-  Clean light startup style (Whop / Lemonade vibe).
-  Brand "Forge" is a placeholder. To rename, find-and-replace "Forge".
-  Run:  cd website && node serve.mjs   →  http://localhost:5173
+  Identity: "build-kit / foundry" grounded in Roblox's voxel world.
+  Signature: a hand-built isometric voxel island (the thing your sentence builds).
+  Brand "Forge" is a placeholder. Run:  cd website && node serve.mjs
 -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Forge — Build Roblox games from a sentence</title>
-  <meta name="description" content="Forge is the AI co-developer for Roblox Studio. Describe a system, a world, or a UI and it builds it — server-authoritative code, terrain, and a runtime optimization loop, right inside Studio." />
+  <title>Forge — Describe your game. We build it.</title>
+  <meta name="description" content="Forge is the AI builder inside Roblox Studio. Describe a system, a world, or a UI in plain English and it builds it — real scripts, real terrain, real UI." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%230c0c0d'/><path d='M9 22 L16 9 L23 22 Z' fill='%23d4f73f'/></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2316150f'/><path d='M16 6 L26 12 L16 18 L6 12 Z' fill='%235fbf63'/><path d='M6 12 L16 18 L16 26 L6 20 Z' fill='%23e2493b'/><path d='M26 12 L16 18 L16 26 L26 20 Z' fill='%23ffce3d'/></svg>" />
 </head>
 <body>
-  <!-- NAV -->
   <header class="nav" id="nav">
-    <div class="container nav-inner">
+    <div class="wrap nav-inner">
       <a class="brand" href="#top" aria-label="Forge home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="30" height="30"><rect width="32" height="32" rx="9" fill="#0c0c0d"/><path d="M9 22 L16 9 L23 22 Z" fill="#d4f73f"/></svg>
-        </span>
+        <svg class="brand-mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M16 5 L27 11.5 L16 18 L5 11.5 Z" fill="#5fbf63"/><path d="M5 11.5 L16 18 L16 27 L5 20.5 Z" fill="#e2493b"/><path d="M27 11.5 L16 18 L16 27 L27 20.5 Z" fill="#ffce3d"/></svg>
         <span class="brand-name">Forge</span>
       </a>
-
       <nav class="nav-links" id="navLinks">
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </nav>
-
       <div class="nav-cta">
         <a href="#pricing" class="btn btn-text">Sign in</a>
-        <a href="#pricing" class="btn btn-dark">Start free</a>
+        <a href="#pricing" class="btn btn-ink">Start free</a>
         <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -46,210 +41,200 @@
 
   <main id="top">
     <!-- HERO -->
-    <section class="hero container">
+    <section class="hero wrap">
       <div class="hero-copy reveal">
-        <span class="pill"><span class="dot"></span> Early access</span>
-        <h1>Build Roblox games from <span class="mark">a sentence.</span></h1>
+        <span class="eyebrow">// AI builder for Roblox Studio</span>
+        <h1>Describe your game.<br><span class="ul">Forge builds it.</span></h1>
         <p class="lede">
-          Forge is the AI co-developer that lives inside Roblox Studio. Describe a system,
-          a world, or a UI — it builds it for you, the right way, in seconds.
+          Type a sentence and Forge builds it inside Studio — working systems, real terrain,
+          and UI that actually wires up. The way you'd build it if you had the time.
         </p>
+
+        <div class="promptbox" aria-hidden="true">
+          <span class="pb-caret">&gt;</span><span id="typed" class="pb-typed"></span><span class="pb-cursor"></span>
+        </div>
+
         <div class="hero-actions">
-          <a href="#pricing" class="btn btn-dark btn-lg">Start building free</a>
-          <a href="#demo" class="btn btn-light btn-lg">See it in action</a>
+          <a href="#pricing" class="btn btn-ink btn-lg">Start building — free</a>
+          <a href="#how" class="btn btn-line btn-lg">See how it works</a>
         </div>
-        <div class="hero-trust">
-          <div class="avatars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          <span>Built for indie Roblox studios — free to start</span>
-        </div>
+        <p class="hero-note">No credit card. Runs right inside Roblox Studio.</p>
       </div>
 
-      <!-- product mockup (clean / light) -->
-      <div class="hero-mock reveal" id="demo">
-        <div class="panel">
-          <div class="panel-head">
-            <span class="panel-logo"><svg viewBox="0 0 32 32" width="18" height="18"><rect width="32" height="32" rx="9" fill="#0c0c0d"/><path d="M9 22 L16 9 L23 22 Z" fill="#d4f73f"/></svg> Forge</span>
-            <span class="panel-tag">Studio plugin</span>
-          </div>
-          <div class="panel-body">
-            <div class="field">
-              <span id="typed" class="typed"></span><span class="cursor" aria-hidden="true"></span>
-            </div>
-            <button class="field-btn">Generate</button>
-
-            <div class="results">
-              <div class="row"><span class="check">✓</span> CoinService <em>ServerScriptService</em></div>
-              <div class="row"><span class="check">✓</span> CoinClient <em>StarterPlayerScripts</em></div>
-              <div class="terrain" aria-hidden="true">
-                <div class="hill a"></div><div class="hill b"></div><div class="hill c"></div><div class="water"></div>
-              </div>
-              <div class="metrics">
-                <span class="m"><b>60</b> fps</span>
-                <span class="m"><b>0.8ms</b> heartbeat</span>
-                <span class="m"><b>214</b> MB</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- SIGNATURE: isometric voxel world -->
+      <div class="hero-art reveal" id="demo" aria-hidden="true">
+        <svg viewBox="0 0 540 420" class="voxel" role="img" aria-label="An isometric voxel island built from blocks">
+          <!-- ground shadow -->
+          <ellipse cx="270" cy="372" rx="205" ry="34" fill="#16150f" opacity="0.07"/>
+          <!-- island sides (dirt) -->
+          <polygon points="60,205 270,310 270,378 60,273" fill="#6f4a2b"/>
+          <polygon points="270,310 480,205 480,273 270,378" fill="#8a6038"/>
+          <!-- dirt seam studs -->
+          <g fill="#5c3c22"><rect x="96" y="290" width="20" height="14" rx="3"/><rect x="170" y="328" width="20" height="14" rx="3"/><rect x="244" y="352" width="20" height="14" rx="3"/></g>
+          <!-- grass top -->
+          <polygon points="270,100 480,205 270,310 60,205" fill="#63bf67"/>
+          <polygon points="270,100 480,205 270,310 60,205" fill="none" stroke="#51a857" stroke-width="2" opacity="0.6"/>
+          <!-- studs -->
+          <g fill="#7ed083">
+            <ellipse cx="200" cy="196" rx="10" ry="5"/><ellipse cx="270" cy="196" rx="10" ry="5"/><ellipse cx="340" cy="196" rx="10" ry="5"/>
+            <ellipse cx="235" cy="221" rx="10" ry="5"/><ellipse cx="200" cy="171" rx="10" ry="5"/><ellipse cx="270" cy="246" rx="10" ry="5"/>
+          </g>
+          <!-- lake -->
+          <polygon points="360,232 406,258 360,284 314,258" fill="#2f93c2"/>
+          <polygon points="360,238 399,258 360,278 321,258" fill="#49b4e6"/>
+          <ellipse cx="349" cy="255" rx="9" ry="3" fill="#bfe9f7" opacity="0.7"/>
+          <!-- floating brick: red -->
+          <polygon points="150,120 190,140 150,160 110,140" fill="#e85a45"/>
+          <polygon points="190,140 150,160 150,194 190,174" fill="#c23f2c"/>
+          <polygon points="110,140 150,160 150,194 110,174" fill="#a8341f"/>
+          <ellipse cx="150" cy="139" rx="8" ry="4" fill="#f3897a"/>
+          <!-- floating brick: yellow -->
+          <polygon points="268,60 308,80 268,100 228,80" fill="#ffce3d"/>
+          <polygon points="308,80 268,100 268,134 308,114" fill="#e3ad24"/>
+          <polygon points="228,80 268,100 268,134 228,114" fill="#cc9a1e"/>
+          <ellipse cx="268" cy="79" rx="8" ry="4" fill="#ffe184"/>
+          <!-- floating brick: blue -->
+          <polygon points="392,92 432,112 392,132 352,112" fill="#3d8bf0"/>
+          <polygon points="432,112 392,132 392,166 432,146" fill="#2f6fd0"/>
+          <polygon points="352,112 392,132 392,166 352,146" fill="#2a61bd"/>
+          <ellipse cx="392" cy="111" rx="8" ry="4" fill="#8bbcf8"/>
+          <!-- sparkles -->
+          <g fill="#16150f">
+            <path d="M112,92 l3,7 l7,3 l-7,3 l-3,7 l-3,-7 l-7,-3 l7,-3 z" opacity="0.85"/>
+            <path d="M338,66 l2.4,5.6 l5.6,2.4 l-5.6,2.4 l-2.4,5.6 l-2.4,-5.6 l-5.6,-2.4 l5.6,-2.4 z" opacity="0.7"/>
+            <path d="M454,150 l2,5 l5,2 l-5,2 l-2,5 l-2,-5 l-5,-2 l5,-2 z" opacity="0.6"/>
+          </g>
+        </svg>
+        <span class="art-tag"><span class="pin"></span> “rolling hills with a lake”</span>
       </div>
     </section>
 
-    <!-- MARQUEE / trust strip -->
-    <section class="strip container reveal">
-      <span>Prototype in seconds</span><span class="sep">•</span>
-      <span>Server-authoritative by default</span><span class="sep">•</span>
-      <span>No copy-paste</span><span class="sep">•</span>
-      <span>Lives in Studio</span><span class="sep">•</span>
+    <!-- STRIP -->
+    <section class="strip wrap reveal">
+      <span>Prototype in seconds</span><span class="sep">/</span>
+      <span>Server-safe by default</span><span class="sep">/</span>
+      <span>No copy-paste</span><span class="sep">/</span>
       <span>Learns from your playtests</span>
     </section>
 
-    <!-- FEATURES (bento) -->
-    <section class="section container" id="features">
+    <!-- FEATURES -->
+    <section class="section wrap" id="features">
       <div class="section-head reveal">
-        <h2>Everything you need to ship.</h2>
-        <p>Not a snippet bot. Forge builds working systems, the world around them, and keeps improving your game after you ship.</p>
+        <span class="eyebrow center">// what it builds</span>
+        <h2>One tool, from script to world.</h2>
       </div>
 
-      <div class="bento">
-        <article class="tile reveal">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 6 L3 12 L8 18 M16 6 L21 12 L16 18" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3>Server-authoritative systems</h3>
-          <p>Coins, combat, shops, data saving — secure Luau that never trusts the client.</p>
+      <div class="grid">
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 6 L3 12 L8 18 M16 6 L21 12 L16 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Server-safe systems</h3>
+          <p>Coins, combat, shops, saving — secure Luau that never trusts the client.</p>
         </article>
 
-        <article class="tile t-lime reveal">
-          <span class="badge">The gap nobody fills</span>
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17 C7 11 10 11 12 14 C14 17 17 13 21 9" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M3 21 H21" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
-          <h3>World &amp; terrain generation</h3>
-          <p>“Rolling green hills with a lake.” One sentence becomes real Roblox terrain.</p>
+        <article class="card card-mark reveal">
+          <span class="mk">Nobody else does this</span>
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17 C7 11 10 11 12 14 C14 17 17 13 21 9" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M3 21 H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Worlds &amp; terrain</h3>
+          <p>“Rolling hills with a lake” becomes real Roblox terrain, placed in your game.</p>
         </article>
 
-        <article class="tile t-dark reveal">
-          <span class="badge badge-light">Our moat</span>
-          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.9" fill="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
-          <h3>Runtime optimization loop</h3>
-          <p>Forge watches your playtests and tunes your game from real data. Nobody else does this.</p>
+        <article class="card card-mark reveal">
+          <span class="mk">Nobody else does this</span>
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Optimizes as you test</h3>
+          <p>Forge reads your playtest — FPS, memory, errors — and tunes the game from real data.</p>
         </article>
 
-        <article class="tile t-lav reveal">
-          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.9" fill="none"/><path d="M3 9h18M8 21h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
-          <h3>Lives inside Studio</h3>
-          <p>A native dock widget. Type, click Generate, done — full undo support.</p>
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M3 9h18M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Builds in Studio</h3>
+          <p>A native dock widget. Type, build, undo — no exporting, no pasting.</p>
         </article>
 
-        <article class="tile t-peach reveal">
-          <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.9" fill="none"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.9" fill="none"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.9" fill="none"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.9" fill="none"/></svg></div>
-          <h3>UI generation</h3>
-          <p>Menus, shops, HUDs — generated as real GUI, wired to your systems.</p>
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+          <h3>Menus &amp; HUDs</h3>
+          <p>Shops, inventories, HUDs — generated as real UI, wired to your systems.</p>
         </article>
 
-        <article class="tile t-sky reveal">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.4 7.7-8 9-4.6-1.3-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3>Safe by default</h3>
-          <p>Validated remotes, pcall’d DataStores, retries and BindToClose. Production-ready.</p>
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.4 7.7-8 9-4.6-1.3-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Holds up live</h3>
+          <p>Validated remotes, safe DataStores with retries and shutdown saves. Ships clean.</p>
         </article>
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="section container" id="how">
-      <div class="section-head reveal">
-        <h2>Three steps. Zero boilerplate.</h2>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><span class="step-n">1</span><h3>Describe it</h3><p>Type what you want in plain English. Forge reads your existing scripts for context.</p></div>
-        <div class="step reveal"><span class="step-n">2</span><h3>Forge builds it</h3><p>Real instances — scripts, terrain, GUI — placed in the right services, instantly.</p></div>
-        <div class="step reveal"><span class="step-n">3</span><h3>Playtest &amp; optimize</h3><p>Forge captures your playtest and feeds it back — fixing errors and tuning performance.</p></div>
-      </div>
+    <!-- HOW (real sequence → numbering earns its place) -->
+    <section class="section wrap" id="how">
+      <div class="section-head reveal"><span class="eyebrow center">// the loop</span><h2>Describe, build, playtest — repeat.</h2></div>
+      <ol class="pipeline">
+        <li class="reveal"><span class="step-n">1</span><h3>Describe</h3><p>Say what you want in plain English. Forge reads your existing scripts for context.</p></li>
+        <li class="reveal"><span class="step-n">2</span><h3>Build</h3><p>Real instances — scripts, terrain, UI — land in the right services, instantly.</p></li>
+        <li class="reveal"><span class="step-n">3</span><h3>Playtest</h3><p>Forge captures the run and feeds it back, fixing errors and tuning performance.</p></li>
+      </ol>
     </section>
 
     <!-- PRICING -->
-    <section class="section container" id="pricing">
-      <div class="section-head reveal">
-        <h2>Start free. Scale when you ship.</h2>
-        <p>Every plan runs natively in Studio. Cancel anytime.</p>
-      </div>
-
+    <section class="section wrap" id="pricing">
+      <div class="section-head reveal"><span class="eyebrow center">// pricing</span><h2>Start free. Pay when you ship.</h2></div>
       <div class="plans">
         <article class="plan reveal">
           <h3>Free</h3>
           <div class="price"><span class="amt">$0</span><span class="per">/mo</span></div>
           <p class="plan-sub">For trying it out.</p>
-          <ul>
-            <li>50 generations / month</li>
-            <li>Server-authoritative code</li>
-            <li>Studio plugin</li>
-            <li>Community support</li>
-          </ul>
-          <a href="#" class="btn btn-light btn-block">Get started</a>
+          <ul><li>50 builds a month</li><li>Server-safe code</li><li>Studio plugin</li><li>Community support</li></ul>
+          <a href="#" class="btn btn-line btn-block">Get started</a>
         </article>
-
-        <article class="plan plan-featured reveal">
+        <article class="plan plan-on reveal">
           <span class="plan-badge">Most popular</span>
           <h3>Creator</h3>
           <div class="price"><span class="amt">$15</span><span class="per">/mo</span></div>
           <p class="plan-sub">For solo devs building real games.</p>
-          <ul>
-            <li>Unlimited code generation</li>
-            <li>World &amp; terrain generation</li>
-            <li>UI generation</li>
-            <li>Playtest error capture</li>
-            <li>Priority generation</li>
-          </ul>
-          <a href="#" class="btn btn-lime btn-block">Start 7-day trial</a>
+          <ul><li>Unlimited code builds</li><li>Worlds &amp; terrain</li><li>Menus &amp; HUDs</li><li>Playtest error capture</li><li>Priority builds</li></ul>
+          <a href="#" class="btn btn-brick btn-block">Start 7-day trial</a>
         </article>
-
         <article class="plan reveal">
           <h3>Studio</h3>
           <div class="price"><span class="amt">$39</span><span class="per">/mo</span></div>
           <p class="plan-sub">For teams shipping at scale.</p>
-          <ul>
-            <li>Everything in Creator</li>
-            <li>Runtime optimization loop</li>
-            <li>Team workspaces</li>
-            <li>Version history &amp; rollback</li>
-            <li>Priority support</li>
-          </ul>
-          <a href="#" class="btn btn-light btn-block">Talk to us</a>
+          <ul><li>Everything in Creator</li><li>Optimization loop</li><li>Team workspaces</li><li>Version history</li><li>Priority support</li></ul>
+          <a href="#" class="btn btn-line btn-block">Talk to us</a>
         </article>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="section container narrow" id="faq">
+    <section class="section wrap narrow" id="faq">
       <div class="section-head reveal"><h2>Good questions.</h2></div>
       <div class="faq">
-        <details class="reveal"><summary>Does it really build inside Roblox Studio?<span class="chev"></span></summary><p>Yes. Forge installs as a native dock widget and creates the actual Script, LocalScript, ModuleScript, GUI, and terrain instances in the correct services — with full undo.</p></details>
-        <details class="reveal"><summary>How is this different from a code chatbot?<span class="chev"></span></summary><p>Chatbots hand you a snippet to paste. Forge places working, server-authoritative systems directly into your game, builds the world around them, and learns from your playtests to optimize.</p></details>
-        <details class="reveal"><summary>Is the generated code safe to ship?<span class="chev"></span></summary><p>Best practices are on by default: the server never trusts the client, remotes are validated, DataStores are pcall-wrapped with retries and BindToClose.</p></details>
-        <details class="reveal"><summary>Can I cancel anytime?<span class="chev"></span></summary><p>Yes — monthly, cancel whenever. Free stays free forever.</p></details>
+        <details class="reveal"><summary>Does it really build inside Studio?<span class="chev"></span></summary><p>Yes. Forge installs as a native dock widget and creates the actual scripts, UI, and terrain in the correct services — with full undo.</p></details>
+        <details class="reveal"><summary>How is this different from a code chatbot?<span class="chev"></span></summary><p>A chatbot hands you a snippet to paste. Forge places working, server-safe systems straight into your game, builds the world around them, and learns from your playtests.</p></details>
+        <details class="reveal"><summary>Is the code safe to ship?<span class="chev"></span></summary><p>Best practices are on by default: the server never trusts the client, remotes are validated, and saving is wrapped with retries and shutdown saves.</p></details>
+        <details class="reveal"><summary>Can I cancel anytime?<span class="chev"></span></summary><p>Yes — monthly, cancel whenever. Free stays free.</p></details>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="container reveal">
-      <div class="cta">
-        <h2>Your next game starts with one sentence.</h2>
-        <p>Join the studios building faster with Forge.</p>
-        <a href="#pricing" class="btn btn-lime btn-lg">Start building free</a>
+    <!-- CTA: a baseplate -->
+    <section class="wrap">
+      <div class="cta reveal">
+        <div class="cta-studs" aria-hidden="true"></div>
+        <h2>Your next game is one sentence away.</h2>
+        <p>Build it inside Studio, free.</p>
+        <a href="#pricing" class="btn btn-ink btn-lg">Start building</a>
       </div>
     </section>
   </main>
 
-  <footer class="footer container">
+  <footer class="footer wrap">
     <div class="footer-top">
       <a class="brand" href="#top">
-        <span class="brand-mark"><svg viewBox="0 0 32 32" width="26" height="26"><rect width="32" height="32" rx="9" fill="#0c0c0d"/><path d="M9 22 L16 9 L23 22 Z" fill="#d4f73f"/></svg></span>
+        <svg class="brand-mark" viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path d="M16 5 L27 11.5 L16 18 L5 11.5 Z" fill="#5fbf63"/><path d="M5 11.5 L16 18 L16 27 L5 20.5 Z" fill="#e2493b"/><path d="M27 11.5 L16 18 L16 27 L27 20.5 Z" fill="#ffce3d"/></svg>
         <span class="brand-name">Forge</span>
       </a>
-      <nav class="footer-links">
-        <a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
-      </nav>
+      <nav class="footer-links"><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
     </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> Forge. Not affiliated with Roblox Corporation.</span>
-      <span>Built for Roblox creators.</span>
-    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Forge. Not affiliated with Roblox Corporation.</span><span>Built for creators.</span></div>
   </footer>
 
   <script src="./script.js"></script>
